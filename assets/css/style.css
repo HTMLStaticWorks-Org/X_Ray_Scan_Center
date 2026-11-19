@@ -409,6 +409,7 @@ html[data-theme="dark"] .site-header.header-home1.scrolled {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   height: 80px;
 }
 
@@ -1415,13 +1416,12 @@ html[dir="rtl"] .editorial-floating-badge {
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(3, 105, 161, 0.88) 0%, rgba(8, 47, 73, 0.94) 100%);
-  backdrop-filter: blur(2px);
+  background: linear-gradient(180deg, rgba(2, 132, 199, 0.42) 0%, rgba(12, 74, 110, 0.62) 100%);
   z-index: 1;
 }
 
 html[data-theme="dark"] .page-hero-overlay {
-  background: linear-gradient(180deg, rgba(8, 26, 19, 0.92) 0%, rgba(5, 18, 13, 0.97) 100%);
+  background: linear-gradient(180deg, rgba(7, 25, 41, 0.52) 0%, rgba(6, 19, 31, 0.68) 100%);
 }
 
 .page-hero-content {
@@ -1454,14 +1454,16 @@ html[data-theme="dark"] .page-hero-overlay {
   font-size: clamp(2.2rem, 3.8vw, 3.25rem);
   margin-bottom: 16px;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .page-hero-subtitle {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.94);
   font-size: 1.15rem;
   line-height: 1.65;
   max-width: 680px;
   margin: 0 auto;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
 /* Breadcrumb in Interior Hero */
@@ -2543,6 +2545,15 @@ html[dir="rtl"] .faq-question {
   border-color: var(--color-primary);
   background: var(--surface-card);
   box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+html[data-theme="dark"] input[type="date"] {
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.2);
+  cursor: pointer;
 }
 
 .form-control.is-invalid {

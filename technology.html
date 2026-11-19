@@ -270,7 +270,7 @@
           width: 46px;
           height: 46px;
           border-radius: 50%;
-          background: #FFFFFF;
+          background: var(--surface-card);
           border: 1px solid var(--color-border);
           color: var(--color-text-main);
           display: flex;
@@ -290,7 +290,7 @@
         #tech-platforms-section .deck-nav-prev { left: 0; }
         #tech-platforms-section .deck-nav-next { right: 0; }
         #tech-platforms-section .deck-detail-panel {
-          background: #F8FCFF;
+          background: var(--surface-card);
           border: 1px solid var(--color-border);
           border-left: 4px solid var(--color-primary);
           border-radius: var(--radius-xl);
@@ -314,6 +314,10 @@
           text-transform: uppercase;
           padding: 6px 14px;
           border-radius: 999px;
+        }
+        html[data-theme="dark"] #tech-platforms-section .detail-badge {
+          background: rgba(56, 189, 248, 0.18);
+          color: #7DD3FC;
         }
         #tech-platforms-section .detail-counter {
           font-size: 0.85rem;
@@ -340,13 +344,17 @@
           margin-bottom: 18px;
         }
         #tech-platforms-section .detail-meta span {
-          background: #FFFFFF;
+          background: var(--color-mint-soft);
           border: 1px solid var(--color-border);
           color: var(--color-text-main);
           font-size: 0.8rem;
           font-weight: 600;
           padding: 5px 12px;
           border-radius: 999px;
+        }
+        html[data-theme="dark"] #tech-platforms-section .detail-meta span {
+          background: rgba(255, 255, 255, 0.08);
+          color: #E0F2FE;
         }
         #tech-platforms-section .detail-dots {
           display: flex;
@@ -629,9 +637,20 @@
           <div class="split-col reveal-right">
             <div class="split-img-frame" style="position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);">
               <img src="images/image-57.png" alt="12-Channel Digital Electrocardiograph Screen" style="width:100%;height:460px;object-fit:cover;display:block;">
-              <div style="position:absolute;bottom:20px;left:20px;right:20px;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);padding:18px;border-radius:var(--radius-md);border-left:4px solid var(--primary-color);">
-                <div style="font-weight:800;color:var(--deep-forest);font-size:1rem;margin-bottom:4px;">Multi-Channel Telemetry Console</div>
-                <div style="font-size:0.85rem;color:var(--text-secondary);">High-resolution waveform display verifying synchronized 12-lead vector signals.</div>
+              <style>
+                html[data-theme="dark"] .tech-telemetry-card {
+                  background: rgba(11, 31, 48, 0.92) !important;
+                }
+                html[data-theme="dark"] .tech-telemetry-title {
+                  color: #FFFFFF !important;
+                }
+                html[data-theme="dark"] .tech-telemetry-desc {
+                  color: #CBD5E1 !important;
+                }
+              </style>
+              <div class="tech-telemetry-card" style="position:absolute;bottom:20px;left:20px;right:20px;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);padding:18px;border-radius:var(--radius-md);border-left:4px solid var(--primary-color);">
+                <div class="tech-telemetry-title" style="font-weight:800;color:var(--deep-forest);font-size:1rem;margin-bottom:4px;">Multi-Channel Telemetry Console</div>
+                <div class="tech-telemetry-desc" style="font-size:0.85rem;color:var(--text-secondary);">High-resolution waveform display verifying synchronized 12-lead vector signals.</div>
               </div>
             </div>
           </div>
@@ -758,7 +777,7 @@
           align-items: stretch;
         }
         #calibration-mosaic-section .qa-card {
-          background: #F8FCFF;
+          background: var(--surface-card);
           border: 1px solid var(--color-border);
           border-top: 3.5px solid var(--color-primary);
           border-radius: var(--radius-lg);
@@ -785,6 +804,10 @@
           padding: 5px 12px;
           border-radius: 999px;
           margin-bottom: 14px;
+        }
+        html[data-theme="dark"] #calibration-mosaic-section .qa-kicker {
+          background: rgba(56, 189, 248, 0.18);
+          color: #7DD3FC;
         }
         #calibration-mosaic-section .qa-card h3 {
           font-size: 1.05rem;

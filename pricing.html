@@ -155,237 +155,9 @@
           <span class="divider">/</span>
           <span>Transparent Pricing</span>
         </div>
-        <script>
-          (function () {
-            var grid = document.getElementById('pricing-catalogue-grid');
-            var tabs = document.querySelectorAll('.filter-tabs-wrap .filter-tab');
-            if (!grid || !tabs.length) return;
-            tabs.forEach(function (tab) {
-              tab.addEventListener('click', function () {
-                var f = this.getAttribute('data-filter');
-                grid.classList.remove('filtered-two-col', 'filtered-one-col');
-                if (f === 'all') return;
-                var cards = grid.querySelectorAll('[data-category]');
-                var visibleCount = 0;
-                cards.forEach(function (card) {
-                  var cat = card.getAttribute('data-category') || '';
-                  if (cat === f || cat.indexOf(f) !== -1) {
-                    visibleCount++;
-                  }
-                });
-                if (visibleCount === 2) {
-                  grid.classList.add('filtered-two-col');
-                } else if (visibleCount === 1) {
-                  grid.classList.add('filtered-one-col');
-                }
-              });
-            });
-          })();
-        </script>
       </div>
     </section>
 
-    <!-- ================= SECTION 3: WHAT'S INCLUDED (ASYMMETRIC GUARANTEE BENTO) ================= -->
-    <section class="section section-mint" id="pricing-guarantee-section">
-      <style>
-        #pricing-guarantee-section .guarantee-bento {
-          display: grid;
-          grid-template-columns: 360px 1fr;
-          gap: 28px;
-          align-items: stretch;
-        }
-        #pricing-guarantee-section .guarantee-spotlight {
-          background: linear-gradient(145deg, #0c4a6e 0%, #0369a1 55%, #0284c7 100%);
-          border-radius: var(--radius-xl);
-          padding: 36px 30px;
-          color: #FFFFFF;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          position: relative;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(12, 74, 110, 0.22);
-        }
-        #pricing-guarantee-section .guarantee-spotlight::after {
-          content: '';
-          position: absolute;
-          top: -60px;
-          right: -60px;
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(125, 211, 252, 0.28) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        #pricing-guarantee-section .spotlight-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: rgba(255, 255, 255, 0.14);
-          border: 1px solid rgba(255, 255, 255, 0.24);
-          padding: 6px 14px;
-          border-radius: 999px;
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          width: fit-content;
-          margin-bottom: 24px;
-        }
-        #pricing-guarantee-section .spotlight-stat {
-          font-size: 2.5rem;
-          font-weight: 800;
-          line-height: 1.1;
-          letter-spacing: -0.02em;
-          margin-bottom: 10px;
-        }
-        #pricing-guarantee-section .spotlight-title {
-          font-size: 1.25rem;
-          font-weight: 700;
-          margin: 0 0 12px 0;
-          color: #FFFFFF;
-        }
-        #pricing-guarantee-section .spotlight-desc {
-          font-size: 0.92rem;
-          line-height: 1.65;
-          color: rgba(240, 249, 255, 0.88);
-          margin: 0 0 28px 0;
-        }
-        #pricing-guarantee-section .spotlight-pills {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          padding-top: 20px;
-          border-top: 1px solid rgba(255, 255, 255, 0.18);
-        }
-        #pricing-guarantee-section .spotlight-pill {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 0.86rem;
-          font-weight: 600;
-          color: #E0F2FE;
-        }
-        #pricing-guarantee-section .spotlight-pill svg {
-          width: 17px;
-          height: 17px;
-          color: #7DD3FC;
-          flex-shrink: 0;
-        }
-        #pricing-guarantee-section .guarantee-cards-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-          align-items: stretch;
-        }
-        #pricing-guarantee-section .guarantee-card {
-          background: var(--surface-card);
-          border: 1px solid var(--color-border);
-          border-left: 4px solid var(--color-primary);
-          border-radius: var(--radius-lg);
-          padding: 26px 24px;
-          box-shadow: var(--shadow-card);
-          display: flex;
-          flex-direction: column;
-          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
-        }
-        #pricing-guarantee-section .guarantee-card:hover {
-          transform: translateY(-4px);
-          box-shadow: var(--shadow-card-hover);
-          border-color: var(--color-primary);
-        }
-        #pricing-guarantee-section .guarantee-card-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-          margin-bottom: 16px;
-        }
-        #pricing-guarantee-section .guarantee-icon-pill {
-          width: 46px;
-          height: 46px;
-          border-radius: 12px;
-          background: #E0F2FE;
-          color: var(--color-primary-deep);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-        #pricing-guarantee-section .guarantee-kicker {
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--color-primary);
-        }
-        #pricing-guarantee-section .guarantee-card h3 {
-          font-size: 1.08rem;
-          font-weight: 700;
-          color: var(--color-text-main);
-          margin: 0 0 8px 0;
-          line-height: 1.35;
-        }
-        #pricing-guarantee-section .guarantee-card p {
-          font-size: 0.9rem;
-          line-height: 1.65;
-          color: var(--color-text-muted);
-          margin: 0;
-        }
-        @media (max-width: 1024px) {
-          #pricing-guarantee-section .guarantee-bento {
-            grid-template-columns: 1fr;
-          }
-        }
-        @media (max-width: 640px) {
-          #pricing-guarantee-section .guarantee-cards-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-      </style>
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Our Pricing Guarantee</span>
-          </div>
-          <h2 class="section-title">What Every Tariff Covers</h2>
-          <p class="section-subtitle" style="max-width:740px;">
-            At X-Ray & Scan Center, we believe medical charges must be honest, all-inclusive, and clearly outlined prior to your appointment.
-          </p>
-        </div>
-
-        <div class="guarantee-bento">
-          <!-- Featured Left Spotlight Panel -->
-          <div class="guarantee-spotlight reveal">
-            <div>
-              <div class="spotlight-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>All-Inclusive Standard</span>
-              </div>
-              <div class="spotlight-stat">₹0 Hidden Fees</div>
-              <h3 class="spotlight-title">Complete Diagnostic Transparency</h3>
-              <p class="spotlight-desc">
-                Every listed examination fee includes digital imaging acquisition, radiologist interpretation, thermal film printouts, and secure cloud access.
-              </p>
-            </div>
-            <div class="spotlight-pills">
-              <div class="spotlight-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>MD / DNB Radiologist Signed Reports</span>
-              </div>
-              <div class="spotlight-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>24/7 Cloud DICOM & Printed Film</span>
-              </div>
-              <div class="spotlight-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Same-Day Report Turnaround</span>
-              </div>
-            </div>
-          </div>
-
-          
     <!-- ================= SECTION 1: PRICE FILTER & SEARCH ================= -->
     <section class="section section-white">
       <div class="container">
@@ -623,8 +395,235 @@
           </div>
 
         </div>
+        <script>
+          (function () {
+            var grid = document.getElementById('pricing-catalogue-grid');
+            var tabs = document.querySelectorAll('.filter-tabs-wrap .filter-tab');
+            if (!grid || !tabs.length) return;
+            tabs.forEach(function (tab) {
+              tab.addEventListener('click', function () {
+                var f = this.getAttribute('data-filter');
+                grid.classList.remove('filtered-two-col', 'filtered-one-col');
+                if (f === 'all') return;
+                var cards = grid.querySelectorAll('[data-category]');
+                var visibleCount = 0;
+                cards.forEach(function (card) {
+                  var cat = card.getAttribute('data-category') || '';
+                  if (cat === f || cat.indexOf(f) !== -1) {
+                    visibleCount++;
+                  }
+                });
+                if (visibleCount === 2) {
+                  grid.classList.add('filtered-two-col');
+                } else if (visibleCount === 1) {
+                  grid.classList.add('filtered-one-col');
+                }
+              });
+            });
+          })();
+        </script>
       </div>
     </section>
+
+    <!-- ================= SECTION 3: WHAT'S INCLUDED (ASYMMETRIC GUARANTEE BENTO) ================= -->
+    <section class="section section-mint" id="pricing-guarantee-section">
+      <style>
+        #pricing-guarantee-section .guarantee-bento {
+          display: grid;
+          grid-template-columns: 360px 1fr;
+          gap: 28px;
+          align-items: stretch;
+        }
+        #pricing-guarantee-section .guarantee-spotlight {
+          background: linear-gradient(145deg, #0c4a6e 0%, #0369a1 55%, #0284c7 100%);
+          border-radius: var(--radius-xl);
+          padding: 36px 30px;
+          color: #FFFFFF;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(12, 74, 110, 0.22);
+        }
+        #pricing-guarantee-section .guarantee-spotlight::after {
+          content: '';
+          position: absolute;
+          top: -60px;
+          right: -60px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(125, 211, 252, 0.28) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        #pricing-guarantee-section .spotlight-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255, 255, 255, 0.14);
+          border: 1px solid rgba(255, 255, 255, 0.24);
+          padding: 6px 14px;
+          border-radius: 999px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          width: fit-content;
+          margin-bottom: 24px;
+        }
+        #pricing-guarantee-section .spotlight-stat {
+          font-size: 2.5rem;
+          font-weight: 800;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+          margin-bottom: 10px;
+        }
+        #pricing-guarantee-section .spotlight-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin: 0 0 12px 0;
+          color: #FFFFFF;
+        }
+        #pricing-guarantee-section .spotlight-desc {
+          font-size: 0.92rem;
+          line-height: 1.65;
+          color: rgba(240, 249, 255, 0.88);
+          margin: 0 0 28px 0;
+        }
+        #pricing-guarantee-section .spotlight-pills {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        #pricing-guarantee-section .spotlight-pill {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.86rem;
+          font-weight: 600;
+          color: #E0F2FE;
+        }
+        #pricing-guarantee-section .spotlight-pill svg {
+          width: 17px;
+          height: 17px;
+          color: #7DD3FC;
+          flex-shrink: 0;
+        }
+        #pricing-guarantee-section .guarantee-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          align-items: stretch;
+        }
+        #pricing-guarantee-section .guarantee-card {
+          background: var(--surface-card);
+          border: 1px solid var(--color-border);
+          border-left: 4px solid var(--color-primary);
+          border-radius: var(--radius-lg);
+          padding: 26px 24px;
+          box-shadow: var(--shadow-card);
+          display: flex;
+          flex-direction: column;
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+        #pricing-guarantee-section .guarantee-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-card-hover);
+          border-color: var(--color-primary);
+        }
+        #pricing-guarantee-section .guarantee-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+        #pricing-guarantee-section .guarantee-icon-pill {
+          width: 46px;
+          height: 46px;
+          border-radius: 12px;
+          background: #E0F2FE;
+          color: var(--color-primary-deep);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        #pricing-guarantee-section .guarantee-kicker {
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--color-primary);
+        }
+        #pricing-guarantee-section .guarantee-card h3 {
+          font-size: 1.08rem;
+          font-weight: 700;
+          color: var(--color-text-main);
+          margin: 0 0 8px 0;
+          line-height: 1.35;
+        }
+        #pricing-guarantee-section .guarantee-card p {
+          font-size: 0.9rem;
+          line-height: 1.65;
+          color: var(--color-text-muted);
+          margin: 0;
+        }
+        @media (max-width: 1024px) {
+          #pricing-guarantee-section .guarantee-bento {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 640px) {
+          #pricing-guarantee-section .guarantee-cards-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Our Pricing Guarantee</span>
+          </div>
+          <h2 class="section-title">What Every Tariff Covers</h2>
+          <p class="section-subtitle" style="max-width:740px;">
+            At X-Ray & Scan Center, we believe medical charges must be honest, all-inclusive, and clearly outlined prior to your appointment.
+          </p>
+        </div>
+
+        <div class="guarantee-bento">
+          <!-- Featured Left Spotlight Panel -->
+          <div class="guarantee-spotlight reveal">
+            <div>
+              <div class="spotlight-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>All-Inclusive Standard</span>
+              </div>
+              <div class="spotlight-stat">₹0 Hidden Fees</div>
+              <h3 class="spotlight-title">Complete Diagnostic Transparency</h3>
+              <p class="spotlight-desc">
+                Every listed examination fee includes digital imaging acquisition, radiologist interpretation, thermal film printouts, and secure cloud access.
+              </p>
+            </div>
+            <div class="spotlight-pills">
+              <div class="spotlight-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>MD / DNB Radiologist Signed Reports</span>
+              </div>
+              <div class="spotlight-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>24/7 Cloud DICOM & Printed Film</span>
+              </div>
+              <div class="spotlight-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Same-Day Report Turnaround</span>
+              </div>
+            </div>
+          </div>
 
     <!-- Right 2x2 Guarantee Cards -->
           <div class="guarantee-cards-grid stagger-group">
